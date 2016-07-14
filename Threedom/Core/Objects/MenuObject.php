@@ -18,7 +18,7 @@ class MenuObject extends Html\Object {
         $this->addStyle('td-side-menu');
     }
     
-    public function getData() {
+    protected function getData() {
         $data = array();
         
         $data['title'] = PROJECT_NAME;
