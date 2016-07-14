@@ -8,7 +8,7 @@ mb_internal_encoding('UTF-8');
 
 // Set autoloader
 $root = __DIR__;
-require_once $root.'/Threedom/Core/Routines/Autoload.php';
+require_once 'Threedom/Core/Routines/Autoload.php';
 
 // Read configuration
 $config = new Threedom\Configuration\Ini($root, 'config.ini');
