@@ -1,0 +1,45 @@
+.side-menu {
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: 0 0 1em rgba(0,0,0,0.8);
+    background-color: rgba(255,255,255,0.3);
+}
+
+section.side-menu a {
+    display: block;
+    width: 100%;
+    padding: 0.2em;
+}
+section.side-menu a:hover {
+    background-color: rgba(255,255,255,0.5);
+    text-decoration: none;
+}
+
+.side-menu header.menu-section-header,
+.side-menu header.menu-header,
+.side-menu section.menu-section {
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    cursor: default;
+}
+
+.side-menu header.menu-section-header,
+.side-menu header.menu-header {
+    background-color: rgba(0,0,0,0.1);
+}
+    .side-menu header.menu-section-header:hover,
+    .side-menu header.menu-header:hover {
+        background-color: rgba(0,0,0,0.3);
+        color: white;
+    }
+.side-menu header.menu-header a {
+    display: block;
+    padding: 0.5em;
+}
+.side-menu header.menu-header a:hover {
+    background-color: transparent;
+}
+
+.side-menu header.menu-section-header + section.menu-section {
+    display: none;
+}

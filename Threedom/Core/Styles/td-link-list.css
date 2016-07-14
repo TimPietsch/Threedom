@@ -1,0 +1,10 @@
+section.link-list > a {
+    float: left;
+    clear: left;
+}
+
+section.link-list::after {
+    display: block;
+    content: '';
+    clear: both;
+}
