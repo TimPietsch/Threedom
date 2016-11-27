@@ -3,7 +3,7 @@ namespace Threedom\Core\Modules;
 
 use \Threedom\Library\Html;
 
-class Menu extends Html\Object {
+class Menu extends Html\Widget {
     
     /* PROTECTED */
     

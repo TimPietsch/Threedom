@@ -3,7 +3,7 @@ namespace Threedom\Core\Modules;
 
 use \Threedom\Library\Html;
 
-class Backend extends Html\Object {
+class Backend extends Html\Widget {
     
     /* PROTECTED */
     

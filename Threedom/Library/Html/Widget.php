@@ -9,7 +9,7 @@ use \Threedom\Library\General;
  * @todo interface documentation
  * @author Beef
  */
-class Object extends General\Object 
+class Widget extends General\DataAccess 
 
 implements Interfaces\iWidget {
     
