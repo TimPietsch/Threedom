@@ -19,16 +19,16 @@ abstract class Directive extends General\Directive {
      * @todo update documentation
      * @access protected
      * @param string $name
-     * @param string $object
+     * @param string $widget
      */
-    protected final function addTemplate(Object $object) {
+    protected final function addTemplate(Object $widget) {
         // Add object to the list
-        $this->_objectsList[] = $object;
+        $this->_objectsList[] = $widget;
 
         // Registered styles and scripts are dependent on object
-        if ($object instanceof Interfaces\iWidget) {
-            $this->_registerStyles($object->getStyles());
-            $this->_registerScripts($object->getScripts());
+        if ($widget instanceof Interfaces\iWidget) {
+            $this->_registerStyles($widget->getStyles());
+            $this->_registerScripts($widget->getScripts());
         }
     }
     

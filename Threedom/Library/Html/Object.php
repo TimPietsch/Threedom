@@ -28,7 +28,7 @@ implements Interfaces\iWidget {
         
         // Open template
         if ($template === null) {
-            $template = ucfirst(end(explode('\\', get_class($this))));
+            $template = 'Templates/'.ucfirst(end(explode('\\', get_class($this))));
         }
         $this->setTemplate($template);
         
@@ -38,7 +38,7 @@ implements Interfaces\iWidget {
         // Retrieve child data
         $this->_data = $this->getData();
         
-        if (get_class($this) === 'Threedom\Core\Objects\BackendObject') {
+        if (get_class($this) === 'Threedom\Core\Modules\Backend') {
 //            var_dump($this->_data);
         }
         

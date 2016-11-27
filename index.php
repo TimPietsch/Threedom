@@ -8,6 +8,7 @@ mb_internal_encoding('UTF-8');
 
 // Set autoloader
 $root = __DIR__;
+set_include_path($root);
 require_once 'Threedom/Core/Routines/Autoload.php';
 
 // Read configuration
