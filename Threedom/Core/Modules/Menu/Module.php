@@ -6,6 +6,6 @@ namespace Threedom\Core\Modules\Menu;
  *
  * @author Beef
  */
-class Modul {
+class Module {
     
 }

@@ -13,6 +13,6 @@ namespace Threedom\Core\Modules\Backend;
  *
  * @author Beef
  */
-class Modul {
+class Module {
     //put your code here
 }
