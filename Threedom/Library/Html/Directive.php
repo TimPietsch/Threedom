@@ -21,7 +21,7 @@ abstract class Directive extends General\Directive {
      * @param string $name
      * @param string $widget
      */
-    protected final function addTemplate(Widget $widget) {
+    protected final function addWidget(Widget $widget) {
         // Add object to the list
         $this->_objectsList[] = $widget;
 

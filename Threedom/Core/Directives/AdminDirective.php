@@ -13,8 +13,8 @@ class AdminDirective extends Html\Directive {
     protected function directive() {
         $this->addStyle('td-Backend_General');
         
-        $this->addTemplate(new Modules\Menu('Threedom/Core/Templates/MainMenu'));
-        $this->addTemplate(new Modules\Backend('Threedom/Core/Templates/Backend'));
+        $this->addWidget(new Modules\Menu('Threedom/Core/Templates/MainMenu'));
+        $this->addWidget(new Modules\Backend('Threedom/Core/Templates/Backend'));
     }
     
     /* PRIVATE */
