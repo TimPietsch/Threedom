@@ -32,13 +32,15 @@ class Backend extends Html\Object {
     private function _loadClass() {
         $get = $this->getInput('get');
         
-        foreach (new \DirectoryIterator(SYSTEM_ROOT.'/Objects') as $file) {
+        foreach (new \DirectoryIterator(SYSTEM_ROOT.'/Plugins') as $file) {
             // Skip on '.' and '..'
             if ($file->isDot()) { continue; }
             
+            // Skip wrong files
+            if ($get->getParameter(ADMIN_DIRECTIVE).'.php' !== $file->getFilename()) { continue; }
+            
             // Get object information
-            if ($get->getParameter(ADMIN_DIRECTIVE).'Object.php' !== $file->getFilename()) { continue; }
-            $this->_class = 'Objects\\'.substr($file->getFilename(), 0, -4);
+            $this->_class = 'Plugins\\'.substr($file->getFilename(), 0, -4);
         }
     }
     

@@ -35,7 +35,7 @@ class Menu extends Html\Object {
     private $_objects = array();
     
     private function _loadObjects() {
-        foreach (new \DirectoryIterator(SYSTEM_ROOT.'/Objects') as $file) {
+        foreach (new \DirectoryIterator(SYSTEM_ROOT.'/Plugins') as $file) {
             // Skip on '.' and '..'
             if ($file->isDot()) { continue; }
             

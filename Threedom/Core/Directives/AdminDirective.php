@@ -1,7 +1,7 @@
 <?php
 namespace Threedom\Core\Directives;
 
-use Threedom\Core\Objects;
+use Threedom\Core\Modules;
 use Threedom\Library\Html;
 
 class AdminDirective extends Html\Directive {
@@ -13,8 +13,8 @@ class AdminDirective extends Html\Directive {
     protected function directive() {
         $this->addStyle('td-Backend_General');
         
-        $this->addTemplate(new Objects\MenuObject('Threedom/Core/Templates/MainMenu'));
-        $this->addTemplate(new Objects\BackendObject('Threedom/Core/Templates/Backend'));
+        $this->addTemplate(new Modules\Menu('Threedom/Core/Templates/MainMenu'));
+        $this->addTemplate(new Modules\Backend('Threedom/Core/Templates/Backend'));
     }
     
     /* PRIVATE */

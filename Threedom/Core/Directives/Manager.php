@@ -16,6 +16,7 @@ class Manager extends General\DataAccess {
     /**
      * Registers a directive to be run if the query is empty
      * 
+     * @todo remove need for naming convention
      * @param string $name The name of a directive
      */
     public function standard($name) {
@@ -29,6 +30,7 @@ class Manager extends General\DataAccess {
     /**
      * Registers a directive to be run under certain conditions
      * 
+     * @todo remove need for naming convention
      * @param mixed $trigger What triggers the directive to run
      * @param string $name The name of a directive
      */
