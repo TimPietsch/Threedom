@@ -1,9 +1,9 @@
 <?php
-namespace Threedom\Core\Objects;
+namespace Threedom\Core\Modules;
 
 use \Threedom\Library\Html;
 
-class MenuObject extends Html\Object {
+class Menu extends Html\Object {
     
     /* PROTECTED */
     
