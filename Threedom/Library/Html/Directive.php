@@ -23,7 +23,7 @@ abstract class Directive extends General\Directive {
      */
     protected final function addWidget(Widget $widget) {
         // Add object to the list
-        $this->_objectsList[] = $widget;
+        $this->_widgetsList[] = $widget;
 
         // Registered styles and scripts are dependent on object
         if ($widget instanceof Interfaces\iWidget) {
@@ -93,7 +93,7 @@ END_OF_DOCUMENT;
      * @access private
      * @var array
      */
-    private $_objectsList = array();
+    private $_widgetsList = array();
     
     /**
      * Returns an HTML title tag, composed from the registered parts
@@ -163,7 +163,7 @@ END_OF_DOCUMENT;
      * @return string
      */
     private function _printTemplates() {
-        return implode("\n", $this->_objectsList);
+        return implode("\n", $this->_widgetsList);
     }
     
     /**
