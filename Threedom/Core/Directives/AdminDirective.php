@@ -19,7 +19,7 @@ class AdminDirective extends Html\Directive {
     
     /* PRIVATE */
     
-    private $_objects = array();
+    private $_widgets = array();
     
     /**
      * Creates an html form from the form data stored for the specified object class
@@ -31,7 +31,7 @@ class AdminDirective extends Html\Directive {
     private function _getForm($class) {
         $fields = array();
         $tag = 'form';
-        foreach ($this->_objects[$class]['form'] as $name => $type) {
+        foreach ($this->_widgets[$class]['form'] as $name => $type) {
             switch ($type) {
                 case 'text':
                 case 'color':
@@ -64,7 +64,7 @@ class AdminDirective extends Html\Directive {
         
         $name = ADMIN_NAME;
         $form = '';
-        foreach ($this->_objects as $class => $object) {
+        foreach ($this->_widgets as $class => $object) {
             if ($object['name'] === $query->getParameter(ADMIN_DIRECTIVE)) {
                 $name = $object['name'];
                 $form = '<section class="backend-panel" style="background-color: '.ADMIN_COLOR_PRI.'">'.$this->_getForm($class).'</section>';
