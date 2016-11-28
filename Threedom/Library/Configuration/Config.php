@@ -4,6 +4,7 @@ namespace Threedom\Library\Configuration;
 /**
  * Provides functionality for configuration classes
  *
+ * @deprecated
  * @todo Remove deprecated settings
  * @author Beef
  */

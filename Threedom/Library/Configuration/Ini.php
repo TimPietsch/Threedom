@@ -4,6 +4,7 @@ namespace Threedom\Library\Configuration;
 /**
  * Description of Configuration
  *
+ * @deprecated
  * @author Beef
  */
 class Ini extends Config {
