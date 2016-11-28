@@ -1,5 +1,5 @@
 <?php
-namespace Threedom\Configuration;
+namespace Threedom\Library\Configuration;
 
 /**
  * Description of Configuration

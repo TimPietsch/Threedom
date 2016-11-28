@@ -16,7 +16,7 @@ set_include_path($root);
 require_once 'Threedom/Core/Routines/Autoload.php';
 
 // Read configuration
-$config = new Threedom\Configuration\Ini($root, 'config.ini');
+$config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
 
 // Register directives
 $directives = new Threedom\Core\Directives\Manager();

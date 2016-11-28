@@ -1,5 +1,5 @@
 <?php
-namespace Threedom\Configuration;
+namespace Threedom\Library\Configuration;
 
 /**
  * Provides functionality for configuration classes
