@@ -1,7 +1,7 @@
 <?php
 
 // Display errors for debugging
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 // Set internal character encoding to UTF-8
 mb_internal_encoding('UTF-8');

@@ -1,14 +1,15 @@
 <?php
-spl_autoload_register(function($objectName) {
-    global $root;
-    $path = str_replace('\\', '/', $objectName);
+namespace Threedom\Core\Routines;
 
-    // Check if file exists before including
-    if (file_exists("$root/$path.php")) {
-        // Include file from central /php/ directory
-        include "$root/$path.php";
-    }
-    else {
+/**
+ * Description of Autoload
+ *
+ * @author TimPietsch <TimPietsch@GitHub.com>
+ */
+class Autoload {
+    function __invoke($objectName) {
+        $path = str_replace('\\', '/', $objectName);
+        
         include "$path.php";
     }
-});
+}
