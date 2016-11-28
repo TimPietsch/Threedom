@@ -19,8 +19,9 @@ require_once 'Threedom/Core/Routines/AutoloadOld.php';
 $config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
 
 // Check if the application has been deployed
-if (__FILE__ !== 'index.php') {
-    echo __FILE__;
+$file = end(explode('\\', __FILE__));
+if ($file !== 'index.php') {
+    echo $file;
 }
 
 /* v to be changed v */
