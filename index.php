@@ -13,7 +13,8 @@ $root = __DIR__;
 set_include_path($root);
 
 // Set autoloader
-require_once 'Threedom/Core/Routines/AutoloadOld.php';
+require_once 'Threedom/Core/Routines/Autoload.php';
+spl_autoload_register(new Threedom\Core\Routines\Autoload());
 
 // Read configuration
 $config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
