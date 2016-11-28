@@ -16,12 +16,17 @@ set_include_path($root);
 require_once 'Threedom/Core/Routines/Autoload.php';
 spl_autoload_register(new Threedom\Core\Routines\Autoload());
 
-// Read configuration
-$config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
+if (count($_GET) !== 0) {
+    // Send POST data to module
+}
+else {
+    // Read configuration
+    $config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
 
-// Register directives
-$directives = new Threedom\Core\Directives\Manager();
-include 'directives.php';
+    // Register directives
+    $directives = new Threedom\Core\Directives\Manager();
+    include 'directives.php';
 
-// Run query URL
-$directives->run();
+    // Run query URL
+    $directives->run();
+}
