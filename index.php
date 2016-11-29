@@ -21,7 +21,7 @@ if (count($_GET) !== 0) {
 }
 else {
     // Read configuration
-    $config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
+//    $config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
 
     // Register directives
     $directives = new Threedom\Core\Directives\Manager();

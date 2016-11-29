@@ -13,22 +13,27 @@ $root = __DIR__;
 set_include_path($root);
 
 // Set autoloader
-require_once 'Threedom/Core/Routines/AutoloadOld.php';
+require_once 'Threedom/Core/Routines/Autoload.php';
+spl_autoload_register(new Threedom\Core\Routines\Autoload());
 
-// Read configuration
-$config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
+if (count($_GET) !== 0) {
+    // Send POST data to module
+}
+else {
+    // Read configuration
+//    $config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
+    
+    // Check if the application has been deployed
+    $file = end(explode('\\', __FILE__));
+    if ($file !== 'index.php') {
+        echo $file;
+    }
+    
+    // Register directives
+    $directives = new Threedom\Core\Directives\Manager();
+    include 'directives.php';
 
-// Check if the application has been deployed
-$file = end(explode('\\', __FILE__));
-if ($file !== 'index.php') {
-    echo $file;
+    // Run query URL
+    $directives->run();
 }
 
-/* v to be changed v */
-
-// Register directives
-$directives = new Threedom\Core\Directives\Manager();
-include 'directives.php';
-
-// Run query URL
-$directives->run();
