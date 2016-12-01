@@ -22,10 +22,10 @@ abstract class Configuration {
      * @param array $settings
      */
     protected function write($settings) {
-        $settings = $this->_list($settings);
+        $settings = $this->_array_flatten($settings);
         
         // Set defaults
-        $defaults = $this->_list($this->_defaults);
+        $defaults = $this->_array_flatten($this->_defaults);
         
         // List settings in one-dimensional array
         $config = array_merge($defaults, $settings);
@@ -64,18 +64,19 @@ abstract class Configuration {
     );
     
     /**
-     * Create list from multidimensional array
+     * Flatten a multidimensional array
      * 
+     * @deprecated
      * @access private
-     * @param array $settings
-     * @return array The list
+     * @param array $array
+     * @return array The one-dimensional, flat array
      */
-    private function _list($settings) {
+    private function _array_flatten($array) {
         $list = array();
         
-        foreach ((array)$settings as $name => $setting) {
+        foreach ((array)$array as $name => $setting) {
             if (is_array($setting)) {
-                $subsettings = $this->_list($setting);
+                $subsettings = $this->_array_flatten($setting);
                 
                 foreach($subsettings as $key => $value) {
                     $list[strtoupper($name.'_'.$key)] = $value;
