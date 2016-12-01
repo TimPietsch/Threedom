@@ -5,9 +5,15 @@ namespace Threedom\Library\Configuration;
  * Provides functionality for configuration classes
  *
  * @todo Remove deprecated settings
- * @author Beef
+ * @author TimPietsch
  */
-abstract class Configuration {
+class Configuration {
+    
+    /* PUBLIC */
+    
+    public function __construct($root) {
+        $this->setRoot($root);
+    }
     
     /* PROTECTED */
     
@@ -18,13 +24,14 @@ abstract class Configuration {
     /**
      * Defines the provided settings as constants
      * 
+     * @todo remove calls to deprecated methods
      * @param array $settings
      */
     protected function write($settings) {
-        $settings = $this->_array_flatten($settings);
+        $settings = $this->_arrayFlatten($settings);
         
         // Set defaults
-        $defaults = $this->_array_flatten($this->_defaults);
+        $defaults = $this->_arrayFlatten($this->_defaults);
         
         // List settings in one-dimensional array
         $config = array_merge($defaults, $settings);
@@ -70,12 +77,12 @@ abstract class Configuration {
      * @param array $array
      * @return array The one-dimensional, flat array
      */
-    private function _array_flatten($array) {
+    private function _arrayFlatten($array) {
         $list = array();
         
         foreach ((array)$array as $name => $setting) {
             if (is_array($setting)) {
-                $subsettings = $this->_array_flatten($setting);
+                $subsettings = $this->_arrayFlatten($setting);
                 
                 foreach($subsettings as $key => $value) {
                     $list[strtoupper($name.'_'.$key)] = $value;
