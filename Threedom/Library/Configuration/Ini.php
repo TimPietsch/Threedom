@@ -7,7 +7,7 @@ namespace Threedom\Library\Configuration;
  * @deprecated
  * @author Beef
  */
-class Ini extends Config {
+class Ini extends Configuration {
     
     public function __construct($root, $file) {
         $settings = parse_ini_file($root.'/'.$file, true);

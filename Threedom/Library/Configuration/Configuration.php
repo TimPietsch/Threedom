@@ -8,7 +8,7 @@ namespace Threedom\Library\Configuration;
  * @todo Remove deprecated settings
  * @author Beef
  */
-abstract class Config {
+abstract class Configuration {
     
     /* PROTECTED */
     
