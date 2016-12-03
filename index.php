@@ -20,7 +20,9 @@ require_once 'Threedom/Core/Routines/Autoload.php';
 spl_autoload_register(new Threedom\Core\Routines\Autoload());
 
 // Read configuration
-//$config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
+$config = new Threedom\Core\Configuration('Threedom');
+$config->setRoot($root);
+$config->write(include 'config.php');
 
 if (count($_GET) !== 0) {
     // Send POST data to module
