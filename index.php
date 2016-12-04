@@ -24,10 +24,9 @@ if (count($_GET) !== 0) {
     // Send POST data to module
 }
 else {
-    // Register directives
-    $directives = new Threedom\Core\Directives\Manager();
-//    include 'directives.php';
-
-    // Run query URL
-    $directives->run();
+    $document = new Threedom\Library\Html\DocumentBuilder();
+    
+//    $document->addWidget();
+    
+    echo $document;
 }
