@@ -12,21 +12,25 @@ $root = __DIR__;
 // Set include path
 set_include_path($root);
 
+//Temporary fix while configuration class is WIP
+require_once 'Temp/config_fix.php';
+
 // Set autoloader
 require_once 'Threedom/Core/Routines/Autoload.php';
 spl_autoload_register(new Threedom\Core\Routines\Autoload());
 
+// Read configuration
+$config = new Threedom\Core\Configuration(include 'config.php');
+$config->setRoot($root);
+
 if (count($_GET) !== 0) {
-    // Send POST data to module
+    // Send POST data to plugins
 }
 else {
-    // Read configuration
-//    $config = new Threedom\Library\Configuration\Ini($root, 'config.ini');
-    
     // Check if the application has been deployed
     $file = end(explode('\\', __FILE__));
     if ($file !== 'index.php') {
-        echo $file;
+        echo 'DEBUG MODE';
     }
     
     // Register directives
