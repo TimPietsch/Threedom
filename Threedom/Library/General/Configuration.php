@@ -1,5 +1,5 @@
 <?php
-namespace Threedom\Library\Traits;
+namespace Threedom\Library\General;
 
 /**
  * Provides functionality for configuration classes

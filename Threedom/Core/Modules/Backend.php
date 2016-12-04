@@ -3,7 +3,7 @@ namespace Threedom\Core\Modules;
 
 //use \Threedom\Core;
 use \Threedom\Library\Html;
-use \Threedom\Library\Traits\Configuration;
+use \Threedom\Library\General\Configuration;
 
 class Backend extends Html\Widget {
     

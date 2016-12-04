@@ -1,8 +1,7 @@
 <?php
 namespace Threedom\Core;
 
-use Threedom\Library\Traits;
-//use Threedom\Library;
+use Threedom\Library\General;
 
 /**
  * Provides functionality for configuration classes
@@ -10,7 +9,7 @@ use Threedom\Library\Traits;
  * @todo Remove deprecated settings
  * @author TimPietsch
  */
-class Configuration extends Traits\Configuration {
+class Configuration extends General\Configuration {
     
     /* PUBLIC */
     

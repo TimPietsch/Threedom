@@ -2,7 +2,7 @@
 namespace Threedom\Core\Modules;
 
 use \Threedom\Library\Html;
-use \Threedom\Library\Traits\Configuration;
+use \Threedom\Library\General\Configuration;
 
 class Menu extends Html\Widget {
     
