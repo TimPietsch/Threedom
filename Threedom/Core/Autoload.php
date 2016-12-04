@@ -1,5 +1,5 @@
 <?php
-namespace Threedom\Core\Routines;
+namespace Threedom\Core;
 
 /**
  * Description of Autoload
