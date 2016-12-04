@@ -1,6 +1,7 @@
 <?php
 namespace Threedom\Core;
 
+use Threedom\Library\Traits;
 //use Threedom\Library;
 
 /**
@@ -9,7 +10,7 @@ namespace Threedom\Core;
  * @todo Remove deprecated settings
  * @author TimPietsch
  */
-class Configuration extends Threedom\Library\Traits\Configuration {
+class Configuration extends Traits\Configuration {
     
     /* PUBLIC */
     
