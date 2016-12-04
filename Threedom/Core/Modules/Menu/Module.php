@@ -4,7 +4,7 @@ namespace Threedom\Core\Modules\Menu;
 /**
  * Description of Modul
  *
- * @author Beef
+ * @author TimPietsch
  */
 class Module {
     

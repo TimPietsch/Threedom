@@ -9,7 +9,9 @@ use \Threedom\Library\General;
  * @todo move to proper place in threedom structure
  * @author Beef
  */
-class Manager extends General\DataAccess {
+class Manager {
+    
+    use General\DataAccess;
     
     /* PUBLIC */
     

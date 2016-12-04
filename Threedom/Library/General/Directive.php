@@ -6,9 +6,11 @@ namespace Threedom\Library\General;
  * 
  * @todo documentation
  * @abstract
- * @author Beef
+ * @author TimPietsch
  */
-abstract class Directive extends DataAccess {
+abstract class Directive {
+    
+    use DataAccess;
     
     /* PUBLIC */
     

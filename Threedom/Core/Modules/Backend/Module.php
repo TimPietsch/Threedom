@@ -11,7 +11,7 @@ namespace Threedom\Core\Modules\Backend;
 /**
  * Description of Modul
  *
- * @author Beef
+ * @author TimPietsch
  */
 class Module {
     //put your code here

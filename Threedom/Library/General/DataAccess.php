@@ -9,9 +9,9 @@ use \Threedom\Library\Database;
  * should maybe provide a framework for loading different models ?_?
  * 
  * @todo proper documentation
- * @author Beef
+ * @author TimPietsch
  */
-abstract class DataAccess {
+trait DataAccess {
     
     /* PUBLIC */
     

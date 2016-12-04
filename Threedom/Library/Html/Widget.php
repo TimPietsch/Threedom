@@ -9,9 +9,9 @@ use \Threedom\Library\General;
  * @todo interface documentation
  * @author Beef
  */
-class Widget extends General\DataAccess 
-
-implements Interfaces\iWidget {
+class Widget implements Interfaces\iWidget {
+    
+    use General\DataAccess;
     
     /* PUBLIC */
     
