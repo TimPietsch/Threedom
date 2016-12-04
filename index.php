@@ -26,7 +26,7 @@ if (count($_GET) !== 0) {
 else {
     // Register directives
     $directives = new Threedom\Core\Directives\Manager();
-    include 'directives.php';
+//    include 'directives.php';
 
     // Run query URL
     $directives->run();
