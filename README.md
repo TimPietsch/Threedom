@@ -1,7 +1,4 @@
 This is Threedom
+================
 
-
-
-(c)2016 Tim Pietsch
-
-All rights reserved.
+&copy;2016 Tim Pietsch, all rights reserved.
