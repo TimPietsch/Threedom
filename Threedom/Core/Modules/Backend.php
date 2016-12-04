@@ -2,6 +2,7 @@
 namespace Threedom\Core\Modules;
 
 use \Threedom\Library\Html;
+use \Threedom\Core;
 
 class Backend extends Html\Widget {
     
@@ -32,7 +33,9 @@ class Backend extends Html\Widget {
     private function _loadClass() {
         $get = $this->getInput('get');
         
-        foreach (new \DirectoryIterator(SYSTEM_ROOT.'/Plugins') as $file) {
+        $config = Core\Configuration;
+        
+        foreach (new \DirectoryIterator($config['system']['root'].'/Plugins') as $file) {
             // Skip on '.' and '..'
             if ($file->isDot()) { continue; }
             

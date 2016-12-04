@@ -10,6 +10,11 @@ abstract class Configuration {
     
     /* PUBLIC */
     
+    /**
+     * 
+     * @param type $namespace
+     * @deprecated
+     */
     final public function __construct($namespace = null) {
         if ((string)$namespace === '') {
             echo __FILE__.':'.__LINE__;
@@ -39,9 +44,7 @@ abstract class Configuration {
         $config = array_merge($this->defaultValues(), $settings);
         
         // Define values as constants
-        foreach ($config as $name => $value) {
-            define($this->_namespace.'\\'.$name, $value);
-        }
+        define(get_class($this), $config);
         
         return $success;
     }

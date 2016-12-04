@@ -2,6 +2,7 @@
 namespace Threedom\Core\Modules;
 
 use \Threedom\Library\Html;
+use \Threedom\Core;
 
 class Menu extends Html\Widget {
     
@@ -35,7 +36,9 @@ class Menu extends Html\Widget {
     private $_objects = array();
     
     private function _loadObjects() {
-        foreach (new \DirectoryIterator(SYSTEM_ROOT.'/Plugins') as $file) {
+        $config = Core\Configuration;
+        
+        foreach (new \DirectoryIterator($config['system']['root'].'/Plugins') as $file) {
             // Skip on '.' and '..'
             if ($file->isDot()) { continue; }
             
