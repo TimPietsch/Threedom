@@ -1,7 +1,7 @@
 <?php
 namespace Threedom\Core;
 
-use Threedom\Library;
+//use Threedom\Library;
 
 /**
  * Provides functionality for configuration classes
@@ -9,9 +9,13 @@ use Threedom\Library;
  * @todo Remove deprecated settings
  * @author TimPietsch
  */
-class Configuration extends Library\Configuration {
+class Configuration extends Threedom\Library\Traits\Configuration {
     
     /* PUBLIC */
+    
+    public function __construct($config) {
+        $this->setConfig($config);
+    }
     
     public function setRoot($path) {
         $this->_defaults['system']['root'] = (string)$path;
@@ -19,7 +23,7 @@ class Configuration extends Library\Configuration {
     
     /* PROTECTED */
     
-    protected function defaultValues() { return $this->_defaults; }
+    protected function defaultConfig() { return $this->_defaults; }
     
     /* PRIVATE */
     

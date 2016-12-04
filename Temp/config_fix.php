@@ -1,3 +1,3 @@
 <?php
 
-//define('PROJECT_NAME', 'Threedom Test');
+define('PROJECT_NAME', 'Threedom Test');
