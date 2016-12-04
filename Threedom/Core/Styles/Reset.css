@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    break-inside: avoid;
     margin: 0;
     padding: 0;
 }
