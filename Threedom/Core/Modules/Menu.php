@@ -2,11 +2,15 @@
 namespace Threedom\Core\Modules;
 
 use \Threedom\Library\Html;
-use \Threedom\Core;
+use \Threedom\Library\Traits\Configuration;
 
 class Menu extends Html\Widget {
     
+//    use \Threedom\Library\Traits\Configuration;
+    
     /* PROTECTED */
+    
+    protected function defaultConfig() {}
     
     protected function setup() {
         $this->_loadObjects();
@@ -36,9 +40,12 @@ class Menu extends Html\Widget {
     private $_objects = array();
     
     private function _loadObjects() {
-        $config = Core\Configuration;
+//        var_dump($this->getConfig('Threedom\Core\Configuration'));
         
-        foreach (new \DirectoryIterator($config['system']['root'].'/Plugins') as $file) {
+        $config = new Configuration();
+        $settings = $config->getConfig('Threedom\Core\Configuration');
+        
+        foreach (new \DirectoryIterator($settings['system']['root'].'/Plugins') as $file) {
             // Skip on '.' and '..'
             if ($file->isDot()) { continue; }
             

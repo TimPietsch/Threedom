@@ -1,8 +1,9 @@
 <?php
 namespace Threedom\Core\Modules;
 
+//use \Threedom\Core;
 use \Threedom\Library\Html;
-use \Threedom\Core;
+use \Threedom\Library\Traits\Configuration;
 
 class Backend extends Html\Widget {
     
@@ -33,14 +34,15 @@ class Backend extends Html\Widget {
     private function _loadClass() {
         $get = $this->getInput('get');
         
-        $config = Core\Configuration;
+        $config = new Configuration();
+        $settings = $config->getConfig('Threedom\Core\Configuration');
         
-        foreach (new \DirectoryIterator($config['system']['root'].'/Plugins') as $file) {
+        foreach (new \DirectoryIterator($settings['system']['root'].'/Plugins') as $file) {
             // Skip on '.' and '..'
             if ($file->isDot()) { continue; }
             
             // Skip wrong files
-            if ($get->getParameter(ADMIN_DIRECTIVE).'.php' !== $file->getFilename()) { continue; }
+            if ($get->getParameter($settings['admin']['directive']).'.php' !== $file->getFilename()) { continue; }
             
             // Get object information
             $this->_class = 'Plugins\\'.substr($file->getFilename(), 0, -4);
