@@ -19,7 +19,11 @@ class Configuration extends Traits\Configuration {
     }
     
     public function setRoot($path) {
-        $this->_defaults['system']['root'] = (string)$path;
+        $this->setConfig([
+            'system' => [
+                'root' => (string)$path
+            ]
+        ]);
     }
     
     /* PROTECTED */

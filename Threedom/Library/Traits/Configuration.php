@@ -15,13 +15,16 @@ class Configuration {
             $configKey = get_class($this);
         }
         
-        var_dump(self::$_settings);
+//        echo __FILE__.':'.__LINE__.' - ';
+//        var_dump(self::$_settings[$configKey]);
         
         return self::$_settings[$configKey];
     }
 
     /* PROTECTED */
-
+    
+    protected function defaultConfig() {}
+    
     /**
      * Defines the provided settings as constants
      * 
@@ -32,17 +35,29 @@ class Configuration {
      */
     final protected function setConfig($config) {
         // Combine default values and overriding user settings
-        $config = array_merge($this->defaultConfig(), $config);
+        $config = array_replace_recursive($this->defaultConfig(), $config);
+//        echo __FILE__.':'.__LINE__."\n";
         
-        // Define values as constants
+        // Save values
         if (!array_key_exists(get_class($this), self::$_settings)) {
             self::$_settings[get_class($this)] = $config;
+//            echo __FILE__.':'.__LINE__."\n";
+//            echo 'create - ';
+//            var_dump(self::$_settings);
+        }
+        else {
+//            echo __FILE__.':'.__LINE__."\n";
+//            echo 'before - ';
+//            var_dump(self::$_settings);
+//            echo 'new - ';
+//            var_dump($config);
+            self::$_settings[get_class($this)] = array_replace_recursive(self::$_settings[get_class($this)], $config);
         }
         
-        var_dump(self::$_settings);
+//        echo __FILE__.':'.__LINE__."\n";
+//        echo 'after - ';
+//        var_dump(self::$_settings);
     }
-    
-    protected function defaultConfig() {}
     
     /* PRIVATE */
     
