@@ -1,7 +1,7 @@
 <?php
 
 // Display errors for debugging
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 // Set internal character encoding to UTF-8
 mb_internal_encoding('UTF-8');
@@ -21,20 +21,12 @@ $config = new Threedom\Core\Configuration(include 'config.php');
 $config->setRoot($root);
 
 if (count($_GET) !== 0) {
-    // Send POST data to plugins
+    // Send POST data to module
 }
 else {
-    // Check if the application has been deployed
-    $file = end(explode('\\', __FILE__));
-    if ($file !== 'index.php') {
-        echo 'DEBUG MODE';
-    }
+    $document = new Threedom\Library\Html\DocumentBuilder();
     
-    // Register directives
-    $directives = new Threedom\Core\Directives\Manager();
-//    include 'directives.php';
-
-    // Run query URL
-    $directives->run();
+//    $document->addWidget();
+    
+    echo $document;
 }
-
