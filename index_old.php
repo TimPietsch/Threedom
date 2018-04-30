@@ -24,7 +24,7 @@ if (count($_GET) !== 0) {
     // Send POST data to module
 }
 else {
-    $document = new Threedom\Library\Html\DocumentBuilder();
+    $document = new Threedom\Library\Html\Document();
     
 //    $document->addWidget();
     

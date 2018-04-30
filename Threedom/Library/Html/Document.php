@@ -9,7 +9,7 @@ namespace Threedom\Library\Html;
  * @todo Documentation
  * @author TimPietsch
  */
-class DocumentBuilder {
+class Document {
     
     /* PUBLIC */
     
