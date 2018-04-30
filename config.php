@@ -1,6 +1,8 @@
 <?php
 return [
     'project' => [
-        'name' => '3dom test'
+        'url' => 'localhost',
+        'name' => '3dom test',
+        'autoapi' => false
     ]
 ];

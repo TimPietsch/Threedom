@@ -3,6 +3,9 @@ namespace Threedom\Library\General;
 
 /**
  * Provides functionality for configuration classes
+ * 
+ * Can be extended to provide access to system-wide and case-
+ * specific configurations
  *
  * @author TimPietsch
  */
@@ -14,10 +17,7 @@ class Configuration {
         if ($configKey === null) {
             $configKey = get_class($this);
         }
-        
-//        echo __FILE__.':'.__LINE__.' - ';
-//        var_dump(self::$_settings[$configKey]);
-        
+        echo "## $configKey: ";
         return self::$_settings[$configKey];
     }
 

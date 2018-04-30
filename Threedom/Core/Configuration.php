@@ -7,7 +7,6 @@ use Threedom\Library\General;
  * Provides functionality for configuration classes
  *
  * @todo Remove deprecated settings
- * @author TimPietsch
  */
 class Configuration extends General\Configuration {
     
@@ -27,7 +26,9 @@ class Configuration extends General\Configuration {
     
     /* PROTECTED */
     
-    protected function defaultConfig() { return $this->_defaults; }
+    protected function defaultConfig() {
+        return $this->_defaults;
+    }
     
     /* PRIVATE */
     
@@ -35,26 +36,26 @@ class Configuration extends General\Configuration {
      * @access private
      * @var array Default values for the system
      */
-    private $_defaults = array(
-        'system' => array(
+    private $_defaults = [
+        'system' => [
             'timestamp' => 'Y-m-d H:i:s' // deprecated?
-        ),
-        'project' => array(
+        ],
+        'project' => [
             'name'      => 'PROJECT_NAME',
             'url'       => 'PROJECT_URL',
             'autoapi'   => true
-        ),
-        'admin' => array(
+        ],
+        'admin' => [
             'name'      => 'Administrator',
             'directive' => 'Admin'
-        ),
-        'database' => array(
+        ],
+        'database' => [
             'host'      => 'localhost',
             'username'  => 'DB_USER',
             'password'  => 'DB_PASS',
             'name'      => 'DB_NAME',
             'prefix'    => 'THREEDOM'
-        )
-    );
+        ]
+    ];
     
 }

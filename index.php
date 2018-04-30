@@ -16,18 +16,23 @@ set_include_path($root);
 require_once 'Threedom/Core/Autoload.php';
 spl_autoload_register(new Threedom\Core\Autoload());
 
-//include 'Tests/pokemontest1.php';
-
-//include 'Tests/worldtest1.php';
-
 // Read configuration
 $config = new Threedom\Core\Configuration(include 'config.php');
 $config->setRoot($root);
 
+echo "<pre>";
+$cfg = $config->getConfig();
+var_dump($cfg);
+$cfg = $config->getConfig("system");
+var_dump($cfg);
+$cfg = $config->getConfig("Threedom\Core\Configuration");
+var_dump($cfg);
+echo "</pre>";
+
 // Register directives
-$directives = new Threedom\Core\Directives\Manager();
+//$directives = new Threedom\Core\Directives\Manager();
 //    include 'directives.php';
 
 // Run query URL
-$directives->run();
+//$directives->run();
 
