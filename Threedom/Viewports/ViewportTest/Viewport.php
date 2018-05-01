@@ -6,13 +6,13 @@ use Threedom\Library\General;
 
 class Viewport extends General\Viewport {
 
-    public function registerScripts() {
+    public function scripts() {
         return [
             'Scripts/getMapJson.js'
         ];
     }
 
-    public function registerStyles() {
+    public function styles() {
         return [
             'Styles/style.css'
         ];

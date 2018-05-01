@@ -8,11 +8,33 @@ namespace Threedom\Library\General;
  */
 abstract class Viewport {
 
+    public final function __construct() {
+        $this->_registerScripts($this->scripts());
+        $this->_registerStyles($this->styles());
+    }
+
+    public final function __invoke($get, $post) {
+
+        // Get current viewport's directory
+        $dir = $this->_viewportDir();
+
+        // Iterate over requested actions
+        echo "<pre>";
+        foreach ($get as $action => $args) {
+            // operate only if corresponding action is defined
+            if (file_exists($dir.'/Actions/'.$action)) {
+                echo "action $dir/Actions/$action exists\n";
+            } else {
+                echo "action $dir/Actions/$action not found\n";
+            }
+        }
+        echo "</pre>";
+
+        // return assembled response json
+        return json_encode(['Hallo' => 'Welt']);
+    }
+
     public final function __toString() {
-
-        $this->registerScripts();
-        $this->registerStyles();
-
         return <<<END_OF_DOCUMENT
 <!DOCTYPE html>
 <html>
@@ -29,20 +51,101 @@ abstract class Viewport {
 END_OF_DOCUMENT;
     }
 
-    public abstract function registerScripts();
+    /**
+     * @todo documentation
+     */
+    public abstract function styles();
 
-    public abstract function registerStyles();
+    /**
+     * @todo documentation
+     */
+    public abstract function scripts();
 
+    /**
+     * @todo documentation
+     */
+    private function _registerStyles($files) {
+        // Get viewport directory
+        $dir = $this->_viewportDir();
+
+        // Iterate over files
+        foreach ($files as $file) {
+            // Generate file path from file name
+            $path = $dir.'/'.$file;
+
+            // Check if file exists
+            if (file_exists($path) && !in_array($path, $this->_styleFiles)) {
+                // Register file once
+                $this->_styleFiles[] = $path;
+            }
+        }
+    }
+
+    /**
+     * @todo documentation
+     */
+    private function _registerScripts($files) {
+        // Get viewport directory
+        $dir = $this->_viewportDir();
+
+        // Iterate over files
+        foreach ($files as $file) {
+            // Generate file path from file name
+            $path = $dir.'/'.$file;
+
+            // Check if file exists
+            if (file_exists($path) && !in_array($path, $this->_scriptFiles)) {
+                // Register file once
+                $this->_scriptFiles[] = $path;
+            }
+        }
+    }
+
+    /**
+     * @todo documentation
+     */
     private function _printStyles() {
-        return "<!-- Styles -->";
+
+        $tags = '';
+
+        foreach ($this->_styleFiles as $file) {
+            $tags .= "<link rel='stylesheet' href='$file'>";
+        }
+
+        return $tags;
     }
 
+    /**
+     * @todo documentation
+     */
     private function _printScripts() {
-        return "<!-- Scripts -->";
+
+        $tags = '';
+
+        foreach ($this->_scriptFiles as $file) {
+            $tags .= "<script src='$file'></script>";
+        }
+
+        return $tags;
     }
 
+    /**
+     * @todo implementation
+     */
     private function _printTitle() {
         return "<title>TITLE</title>";
+    }
+
+    private $_scriptFiles = array();
+    private $_styleFiles = array();
+
+    /**
+     * @todo documentation
+     */
+    private function _viewportDir() {
+        $dirs = explode('\\', get_class($this));
+        array_pop($dirs);
+        return implode('/', $dirs);
     }
 
 }

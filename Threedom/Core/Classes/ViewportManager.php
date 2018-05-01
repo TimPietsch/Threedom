@@ -29,8 +29,14 @@ class ViewportManager {
         }
     }
 
-    public function answer() {
-        echo (string)$this->_viewport;
+    public function answer($get, $post) {
+
+        if (empty($get)) {
+            echo (string)$this->_viewport;
+        } else {
+            $viewport = $this->_viewport;
+            echo (string)$viewport($get, $post);
+        }
     }
 
     /**
