@@ -1,26 +1,29 @@
 <?php
+
 namespace Threedom\Core\Directives;
 
 use Threedom\Core\Modules;
 use Threedom\Library\Html;
 
-class AdminDirective extends Html\Directive {
-    
+/**
+ * @deprecated
+ */
+class AdminDirective extends Html\Action {
     /* PUBLIC */
-    
+
     /* PROTECTED */
-    
-    protected function directive() {
+
+    protected function action() {
         $this->addStyle('td-Backend_General');
-        
+
         $this->addWidget(new Modules\Menu('Threedom/Core/Templates/MainMenu'));
         $this->addWidget(new Modules\Backend('Threedom/Core/Templates/Backend'));
     }
-    
+
     /* PRIVATE */
-    
+
     private $_widgets = array();
-    
+
     /**
      * Creates an html form from the form data stored for the specified object class
      * 
@@ -50,18 +53,18 @@ class AdminDirective extends Html\Directive {
                     break;
             }
         }
-        
+
         if ($tag !== 'p') {
             array_unshift($fields, '<input type="hidden" name="id">');
         }
-        
+
         return "<$tag>".implode('', $fields)."</$tag>";
     }
-    
+
     private function _getView() {
         // Determine object
         $query = $this->getInput('get');
-        
+
         $name = ADMIN_NAME;
         $form = '';
         foreach ($this->_widgets as $class => $object) {
@@ -70,12 +73,12 @@ class AdminDirective extends Html\Directive {
                 $form = '<section class="backend-panel" style="background-color: '.ADMIN_COLOR_PRI.'">'.$this->_getForm($class).'</section>';
             }
         }
-        
+
         // Return all available options
         return <<<END_OF_OPTIONS
 <header>{$name}</header>
 {$form}
 END_OF_OPTIONS;
     }
-    
+
 }

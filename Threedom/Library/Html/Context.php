@@ -4,7 +4,7 @@ namespace Threedom\Library\Html;
 /**
  * Used to refer to HTML contexts of widgets and elements
  *
- * @author Beef
+ * @deprecated
  */
 class Context {
     

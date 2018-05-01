@@ -1,17 +1,18 @@
 <?php
-namespace Threedom\Core;
+
+namespace Threedom\Core\Classes;
 
 /**
  * Description of Autoload
  *
  * @todo Remove access to global variable
- * @author TimPietsch <TimPietsch@GitHub.com>
  */
 class Autoload {
+
     function __invoke($objectName) {
         global $root;
         $path = str_replace('\\', '/', $objectName);
-        
+
         // Include file from application
         if (file_exists("$root/$path.php")) {
             include "$root/$path.php";
@@ -21,4 +22,5 @@ class Autoload {
             include "$path.php";
         }
     }
+
 }

@@ -8,14 +8,14 @@ namespace Threedom\Library\General;
  * @abstract
  * @author TimPietsch
  */
-abstract class Directive {
+abstract class Action {
     
     use DataAccess;
     
     /* PUBLIC */
     
     public final function __invoke() {
-        $this->directive();
+        $this->action();
         return $this->run();
     }
     
@@ -23,5 +23,5 @@ abstract class Directive {
     
     protected function run() { }
     
-    protected abstract function directive();
+    protected abstract function action();
 }
