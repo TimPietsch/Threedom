@@ -1,4 +1,5 @@
 <?php
+
 namespace Threedom\Library\General;
 
 /**
@@ -8,20 +9,22 @@ namespace Threedom\Library\General;
  * @abstract
  * @author TimPietsch
  */
-abstract class Action {
-    
+abstract class Action_old {
+
     use DataAccess;
-    
+
     /* PUBLIC */
-    
+
     public final function __invoke() {
         $this->action();
         return $this->run();
     }
-    
+
     /* PROTECTED */
-    
-    protected function run() { }
-    
+
+    protected function run() {
+        
+    }
+
     protected abstract function action();
 }

@@ -19,19 +19,20 @@ abstract class Viewport {
         $dir = $this->_viewportDir();
 
         // Iterate over requested actions
-        echo "<pre>";
         foreach ($get as $action => $args) {
             // operate only if corresponding action is defined
-            if (file_exists($dir.'/Actions/'.$action)) {
-                echo "action $dir/Actions/$action exists\n";
+            $path = $dir.'/Actions/'.$action;
+            if (file_exists($path.'.php')) {
+                $actionClass = str_replace('/', '\\', $path);
+                $action = new $actionClass();
+                $response = $action($args);
             } else {
-                echo "action $dir/Actions/$action not found\n";
+                $response = ['No' => 'Action'];
             }
         }
-        echo "</pre>";
 
         // return assembled response json
-        return json_encode(['Hallo' => 'Welt']);
+        return json_encode($response);
     }
 
     public final function __toString() {

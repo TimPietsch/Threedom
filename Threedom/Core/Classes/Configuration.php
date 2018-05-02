@@ -5,7 +5,7 @@ namespace Threedom\Core\Classes;
 use Threedom\Library\General;
 
 /**
- * Provides functionality for configuration classes
+ * Manages the configuration of Threedom\Core
  */
 class Configuration extends General\Configuration {
 
@@ -18,18 +18,20 @@ class Configuration extends General\Configuration {
     }
 
     public function setRoot($path) {
-        $root = [
-            'project' => [
-                'root' => (string) $path
-            ]
-        ];
+        // Set root if it was not set before
+        if (!array_key_exists('root', $this->_settings['project'])) {
+            $root = [
+                'project' => [
+                    'root' => (string)$path
+                ]
+            ];
 
-        $this->setConfig($root, true);
+            $this->setConfig($root, true);
+        }
     }
 
     public function getViewport() {
-        $cfg = $this->getConfig();
-        return $cfg['project']['viewport'];
+        return $this->_settings['project']['viewport'];
     }
 
     /* PROTECTED */
