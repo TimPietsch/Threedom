@@ -11,7 +11,7 @@ class GetMap extends General\Action {
         // Initialize response array
         $response = array();
 
-        // Create requested maps
+        // Create requested maps and get client data
         foreach (array($args) as $id) {
             $map = new Map($id);
 
