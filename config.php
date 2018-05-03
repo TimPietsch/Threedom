@@ -4,6 +4,6 @@ return [
     'project' => [
         'url' => 'localhost',
         'name' => '3dom test',
-        'viewport' => 'ViewportTest'
+        'viewport' => 'Consolog'
     ]
 ];

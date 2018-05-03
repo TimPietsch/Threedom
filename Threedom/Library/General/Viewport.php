@@ -46,7 +46,7 @@ abstract class Viewport {
     {$this->_printScripts()}
 </head>
 <body>
-    <div>Hallo Welt!</div>
+    {$this->_printBody()}
 </body>
 </html>
 END_OF_DOCUMENT;
@@ -55,12 +55,25 @@ END_OF_DOCUMENT;
     /**
      * @todo documentation
      */
-    public abstract function styles();
+    protected abstract function styles();
 
     /**
      * @todo documentation
      */
-    public abstract function scripts();
+    protected abstract function scripts();
+
+    /**
+     * @todo documentation
+     */
+    protected abstract function body();
+
+    /**
+     * @todo documentation
+     * @todo dynamically get project path
+     */
+    protected function json($path) {
+        return json_decode(file_get_contents('Examples/'.$path), true);
+    }
 
     /**
      * @todo documentation
@@ -135,6 +148,10 @@ END_OF_DOCUMENT;
      */
     private function _printTitle() {
         return "<title>TITLE</title>";
+    }
+
+    private function _printBody() {
+        return (string)$this->body();
     }
 
     private $_scriptFiles = array();
