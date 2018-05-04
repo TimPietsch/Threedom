@@ -1,6 +1,6 @@
 <?php
 
-namespace Threedom\Viewports\Consolog;
+namespace Threedom\Viewports\Console;
 
 use Threedom\Library\General;
 
@@ -26,7 +26,7 @@ class Viewport extends General\Viewport {
     }
 
     private function _console($array) {
-        return "<input type='text' id='{$array[0]['id']}' value='{$array[0]['log']}'>";
+        return "<input type='text' id='{$array[0]['id']}'>";
     }
 
 }
