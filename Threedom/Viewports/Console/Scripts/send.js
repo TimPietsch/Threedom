@@ -19,11 +19,12 @@ $(document).ready(function() {
         $.ajax({
             url: "?Update[]=" + id,
             data: data,
-            processData: false,
+            dataType: "json",
+//            contentType: 'application/json; charset=utf-8',
+            type: "POST",
             success: (result) => {
                 console.log(result);
                 console.log(data);
-
             },
             error: () => {
                 console.error("fail");

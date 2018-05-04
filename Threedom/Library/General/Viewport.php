@@ -20,6 +20,8 @@ abstract class Viewport {
         // Get current viewport's directory
         $dir = $this->_viewportDir();
 
+        header('Content-Type: application/json');
+
         // Iterate over requested actions
         foreach ($get as $action => $args) {
             // operate only if corresponding action is defined

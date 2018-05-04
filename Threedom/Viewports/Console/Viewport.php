@@ -9,7 +9,7 @@ class Viewport extends General\Viewport {
     protected function scripts() {
         return [
             'Scripts/jquery-3.3.1.min.js',
-            'Scripts/update.js'
+            'Scripts/send.js'
         ];
     }
 

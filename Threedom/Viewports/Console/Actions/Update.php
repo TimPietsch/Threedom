@@ -7,14 +7,17 @@ use Threedom\Library\General;
 class Update extends General\Action {
 
     public function __invoke($args) {
-        $response = [];
+        $post = $this->postData();
 
-        $i = 0;
-        foreach ($args as $value) {
-            $response[] = $value.$i++;
-        }
+        $response = $post;
 
         return $response;
+    }
+
+    public function dataFields() {
+        return [
+            'message'
+        ];
     }
 
 }
