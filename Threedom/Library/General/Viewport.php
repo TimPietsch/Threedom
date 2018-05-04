@@ -4,6 +4,7 @@ namespace Threedom\Library\General;
 
 /**
  * Description of Viewport
+ * 
  * @todo documentation
  */
 abstract class Viewport {
@@ -11,6 +12,7 @@ abstract class Viewport {
     public final function __construct() {
         $this->_registerScripts($this->scripts());
         $this->_registerStyles($this->styles());
+        $this->_registerBody($this->body());
     }
 
     public final function __invoke($get, $post) {
@@ -24,8 +26,8 @@ abstract class Viewport {
             $path = $dir.'/Actions/'.$action;
             if (file_exists($path.'.php')) {
                 $actionClass = str_replace('/', '\\', $path);
-                $action = new $actionClass();
-                $response = $action($args);
+                $action = new $actionClass($post);
+                $response = $action((array)$args);
             } else {
                 $response = ['No' => 'Action'];
             }
@@ -42,10 +44,12 @@ abstract class Viewport {
 <head>
     <meta charset="UTF-8">
     {$this->_printTitle()}
+    <link rel="stylesheet" href="Threedom/Core/Styles/threedom.css">
+    <link rel="stylesheet" href="Threedom/Core/Styles/viewport.css">
     {$this->_printStyles()}
     {$this->_printScripts()}
 </head>
-<body>
+<body class="threedom">
     {$this->_printBody()}
 </body>
 </html>
@@ -115,6 +119,10 @@ END_OF_DOCUMENT;
         }
     }
 
+    private function _registerBody($body) {
+        $this->_body = (string)$body;
+    }
+
     /**
      * @todo documentation
      */
@@ -151,11 +159,12 @@ END_OF_DOCUMENT;
     }
 
     private function _printBody() {
-        return (string)$this->body();
+        return $this->_body;
     }
 
     private $_scriptFiles = array();
     private $_styleFiles = array();
+    private $_body = '';
 
     /**
      * @todo documentation

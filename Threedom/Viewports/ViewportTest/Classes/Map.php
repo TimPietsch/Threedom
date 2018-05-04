@@ -27,13 +27,13 @@ class Map {
         // TODO: change to dynamic game id
         if ($this->_id !== false) {
             $json = file_get_contents("Examples/World/Maps/".$this->_id.".json");
-            $this->_originalJson = json_decode($json, true);
+            $this->_data = json_decode($json, true);
         }
     }
 
     public function clientData() {
         if ($this->_id !== false) {
-            return $this->_originalJson;
+            return $this->_data;
         } else {
             return null;
         }
@@ -50,6 +50,6 @@ class Map {
      * 
      * @var array 
      */
-    private $_originalJson;
+    private $_data;
 
 }
