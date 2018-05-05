@@ -1,4 +1,4 @@
-body.threedom > #viewport {
+body#threedom > #viewport {
     position: absolute;
     top: 0;
     right: 0;

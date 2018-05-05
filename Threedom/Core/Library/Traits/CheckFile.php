@@ -8,7 +8,9 @@ trait CheckFile {
 
     protected function checkAppJson($folder, $file) {
         $cfg = new Core\Classes\Configuration();
-        $appDir = $cfg->getAppId();
+        $appDir = $cfg->getAppDir();
+
+        return file_exists($appDir.'/'.$folder.'/'.$file.'.json');
     }
 
 }
