@@ -69,10 +69,12 @@ abstract class Viewport {
     <link rel="stylesheet" href="Threedom/Core/Styles/threedom.css">
     <link rel="stylesheet" href="Threedom/Core/Styles/viewport.css">
     {$this->_printStyles()}
-    {$this->_printScripts()}
 </head>
-<body class="threedom">
+<body id="threedom">
     {$this->_printBody()}
+    <section id="scripts">
+    {$this->_printScripts()}
+    </section>
 </body>
 </html>
 END_OF_DOCUMENT;
