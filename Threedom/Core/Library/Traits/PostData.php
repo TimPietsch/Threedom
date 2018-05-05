@@ -5,7 +5,6 @@ namespace Threedom\Core\Library\Traits;
 /**
  * Provides access to the data sent via POST method
  * 
- * @todo documentation
  * @todo provide filter security
  */
 trait PostData {
@@ -34,19 +33,26 @@ trait PostData {
         $keys = $this->postDataFields();
 
         // iterate over $_POST and filter out illegal fields
-        foreach ($_POST as $key => $value) {
-            if (in_array($key, $keys)) {
-                $this->_post[$key] = $value;
+        foreach ($keys as $key) {
+            if (array_key_exists($key, $_POST)) {
+                $this->_post[$key] = $_POST[$key];
+            } else {
+                $this->_post[$key] = null;
             }
         }
     }
 
     /**
-     * @todo documentation
+     * Returns POST data
+     * 
+     * PostData\setPostData() must have been called before this is called, or all return
+     * values will be <b>NULL</b>.
+     * 
+     * @access protected
+     * @param string $key The POST data field which should be returned
+     * @return mixed The field data or the whole POST data according to specified fields
      */
     protected function getPostData($key = null) {
-        $return = [];
-
         if ($key === null) {
             $return = $this->_post;
         } else {
@@ -56,6 +62,12 @@ trait PostData {
         return $return;
     }
 
+    /**
+     * The filtered POST data
+     * 
+     * @access private
+     * @var array 
+     */
     private $_post = [];
 
 }

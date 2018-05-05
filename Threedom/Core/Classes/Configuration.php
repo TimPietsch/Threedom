@@ -31,7 +31,7 @@ class Configuration extends Library\Classes\Configuration {
     }
 
     public function getAppDir() {
-        return $this->_settings['project']['root'].'/'.$this->_settings['project']['directory'];
+        return $this->_settings['project']['directory'];
     }
 
     public function getViewport() {

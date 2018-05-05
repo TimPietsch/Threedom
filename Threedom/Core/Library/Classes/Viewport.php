@@ -2,6 +2,8 @@
 
 namespace Threedom\Core\Library\Classes;
 
+use Threedom\Core\Classes;
+
 /**
  * Description of Viewport
  * 
@@ -17,8 +19,8 @@ abstract class Viewport {
 
     public final function __invoke($get) {
         // Get application directory
-        $cfg = new Configuration();
-        $appDir = $cfg->_getAppDir();
+        $cfg = new Classes\Configuration();
+        $appDir = $cfg->getAppDir();
 
         // Iterate over requested actions
         foreach ($get as $action => $args) {
@@ -34,7 +36,7 @@ abstract class Viewport {
 
         // return assembled response json
         // TODO: move header() to header management class
-        header('Content-Type: application/json');
+//        header('Content-Type: application/json');
         return json_encode($response);
     }
 
