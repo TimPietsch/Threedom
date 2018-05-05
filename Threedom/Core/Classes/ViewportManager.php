@@ -29,14 +29,14 @@ class ViewportManager {
         }
     }
 
-    public function answer($get, $post) {
+    public function answer($get) {
 
         $viewport = $this->_viewport;
 
         if (empty($get)) {
             echo (string)$viewport;
         } else {
-            $action = $viewport($get, $post);
+            $action = $viewport($get);
             echo (string)$action;
         }
     }

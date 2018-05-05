@@ -2,12 +2,12 @@
 
 namespace Threedom\Core\Classes;
 
-use Threedom\Library\General;
+use Threedom\Core\Library;
 
 /**
  * Manages the configuration of Threedom\Core
  */
-class Configuration extends General\Configuration {
+class Configuration extends Library\Classes\Configuration {
 
     public function __construct($config = null) {
         if ($config != null) {
@@ -28,6 +28,10 @@ class Configuration extends General\Configuration {
 
             $this->setConfig($root, true);
         }
+    }
+
+    public function getAppDir() {
+        return $this->_settings['project']['root'].'/'.$this->_settings['project']['directory'];
     }
 
     public function getViewport() {
@@ -54,6 +58,7 @@ class Configuration extends General\Configuration {
     private $_defaults = [
         'project' => [
             'name' => 'PROJECT_NAME',
+            'directory' => 'Application',
             'url' => 'PROJECT_URL',
             'viewport' => 'Threedom'
         ],

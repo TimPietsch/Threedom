@@ -22,4 +22,4 @@ $config->setRoot($root);
 
 // Start viewport manager
 $manager = new Threedom\Core\Classes\ViewportManager($config->getViewport());
-$manager->answer($_GET, $_POST);
+$manager->answer($_GET);

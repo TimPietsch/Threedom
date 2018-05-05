@@ -25,6 +25,8 @@ $(document).ready(function() {
             success: (result) => {
                 console.log(result);
                 console.log(data);
+
+                vpLog.append(new vpConsoleMessage(result).toString());
             },
             error: () => {
                 console.error("fail");

@@ -1,6 +1,6 @@
 <?php
 
-namespace Threedom\Library\General;
+namespace Threedom\Core\Library\Classes;
 
 /**
  * Description of Viewport
@@ -15,27 +15,26 @@ abstract class Viewport {
         $this->_registerBody($this->body());
     }
 
-    public final function __invoke($get, $post) {
-
-        // Get current viewport's directory
-        $dir = $this->_viewportDir();
-
-        header('Content-Type: application/json');
+    public final function __invoke($get) {
+        // Get application directory
+        $cfg = new Configuration();
+        $appDir = $cfg->_getAppDir();
 
         // Iterate over requested actions
         foreach ($get as $action => $args) {
             // operate only if corresponding action is defined
-            $path = $dir.'/Actions/'.$action;
-            if (file_exists($path.'.php')) {
-                $actionClass = str_replace('/', '\\', $path);
-                $action = new $actionClass($post);
-                $response = $action((array)$args);
-            } else {
-                $response = ['No' => 'Action'];
+            $path = $appDir.'/Actions/'.(string)$action;
+            $actionClass = file_exists($path.'.php') ? str_replace('/', '\\', $path) : null;
+
+            if ($actionClass !== null) {
+                $action = new $actionClass();
+                $response[] = $action((array)$args);
             }
         }
 
         // return assembled response json
+        // TODO: move header() to header management class
+        header('Content-Type: application/json');
         return json_encode($response);
     }
 
@@ -121,6 +120,9 @@ END_OF_DOCUMENT;
         }
     }
 
+    /**
+     * @todo documentation
+     */
     private function _registerBody($body) {
         $this->_body = (string)$body;
     }
@@ -160,6 +162,9 @@ END_OF_DOCUMENT;
         return "<title>TITLE</title>";
     }
 
+    /**
+     * @todo documentation
+     */
     private function _printBody() {
         return $this->_body;
     }

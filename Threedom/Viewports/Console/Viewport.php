@@ -2,13 +2,14 @@
 
 namespace Threedom\Viewports\Console;
 
-use Threedom\Library\General;
+use Threedom\Core\Library;
 
-class Viewport extends General\Viewport {
+class Viewport extends Library\Classes\Viewport {
 
     protected function scripts() {
         return [
             'Scripts/jquery-3.3.1.min.js',
+            'Scripts/vpConsoleMessage.js',
             'Scripts/send.js'
         ];
     }

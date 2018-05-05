@@ -1,6 +1,6 @@
 <?php
 
-namespace Threedom\Library\General;
+namespace Threedom\Core\Library\Classes;
 
 /**
  * Provides functionality for configuration classes
