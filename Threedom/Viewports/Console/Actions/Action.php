@@ -2,12 +2,11 @@
 
 namespace Threedom\Viewports\Console\Actions;
 
-use Threedom\Library\Classes;
-use Threedom\Library\Traits;
+use Threedom\Core\Library;
 
-abstract class Action extends Classes\Action {
+abstract class Action extends Library\Classes\Action {
 
-    use Traits\PostAccess;
+    use Library\Traits\PostAccess;
 
     public function __construct() {
         $this->setPostData();
