@@ -21,5 +21,5 @@ $config = new Threedom\Core\Classes\Configuration(include 'config.php');
 $config->setRoot($root);
 
 // Start viewport manager
-$manager = new Threedom\Core\Classes\ViewportManager($config->getViewport());
+$manager = new Threedom\Core\Classes\ViewportManager($config->getViewportId());
 $manager->answer($_GET);

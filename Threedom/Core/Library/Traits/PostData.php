@@ -28,7 +28,7 @@ trait PostData {
      * @uses PostAccess::postDataFields to determine which POST fields will be provided.
      * @return bool <b>TRUE</b> on success, <b>FALSE</b> otherwise.
      */
-    protected function setPostData() {
+    protected function filterPostData() {
         // read field configuration
         $keys = $this->postDataFields();
 

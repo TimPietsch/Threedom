@@ -20,14 +20,33 @@ abstract class Viewport {
     public final function __invoke($get) {
         // Get application directory
         $cfg = new Classes\Configuration();
+
+        $appId = $cfg->getAppId();
         $appDir = $cfg->getAppDir();
+
+        $viewportId = $cfg->getViewportId();
+        $viewportDir = $cfg->getViewportDir();
+
+        $response = [];
 
         // Iterate over requested actions
         foreach ($get as $action => $args) {
             // operate only if corresponding action is defined
-            $path = $appDir.'/Actions/'.(string)$action;
-            $actionClass = file_exists($path.'.php') ? str_replace('/', '\\', $path) : null;
+            $actionClass = null;
 
+            $appPath = $appDir.'/Actions/'.(string)$action.'.php';
+            $viewportPath = $viewportDir.'/Actions/'.(string)$action.'.php';
+
+            // First check viewport path
+            if (file_exists($viewportPath)) {
+                $actionClass = 'Threedom\\Viewports\\'.$viewportId.'\\Actions\\'.(string)$action;
+            }
+            // Then check app path for overrides
+            if (file_exists($appPath)) {
+                $actionClass = $appId.'\\Actions\\'.(string)$action;
+            }
+
+            // Run action and fill response
             if ($actionClass !== null) {
                 $action = new $actionClass();
                 $response[] = $action((array)$args);

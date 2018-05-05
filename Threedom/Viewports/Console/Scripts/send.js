@@ -17,7 +17,7 @@ $(document).ready(function() {
         var id = vpConsole.attr('id');
 
         $.ajax({
-            url: "?Update[]=" + id,
+            url: "?GetConsole[]=" + id,
             data: data,
             dataType: "json",
 //            contentType: 'application/json; charset=utf-8',

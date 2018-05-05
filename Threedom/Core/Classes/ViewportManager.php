@@ -29,6 +29,9 @@ class ViewportManager {
         }
     }
 
+    /**
+     * @todo documentation
+     */
     public function answer($get) {
 
         $viewport = $this->_viewport;
@@ -44,6 +47,7 @@ class ViewportManager {
     /**
      * Registers a directive to be run if the query is empty
      * 
+     * @deprecated
      * @param string $name The name of a directive
      */
     public function standard($name) {
@@ -57,6 +61,7 @@ class ViewportManager {
     /**
      * Registers a directive to be run under certain conditions
      * 
+     * @deprecated
      * @todo remove need for naming convention
      * @param mixed $trigger What triggers the directive to run
      * @param string $name The name of a directive
@@ -74,6 +79,8 @@ class ViewportManager {
 
     /**
      * Run the directive that best matches the current query
+     * 
+     * @deprecated
      */
     public function run() {
         // Input
@@ -106,6 +113,9 @@ class ViewportManager {
     private $_standard = 'Threedom\Core\Directives\AdminDirective';
     private $_directives = array();
 
+    /**
+     * @deprecated
+     */
     private function _match($trigger, General\Input $get) {
         if (is_array($trigger)) {
             $match = true;

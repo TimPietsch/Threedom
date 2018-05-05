@@ -30,12 +30,21 @@ class Configuration extends Library\Classes\Configuration {
         }
     }
 
-    public function getAppDir() {
+    public function getAppId() {
         return $this->_settings['project']['directory'];
     }
 
-    public function getViewport() {
+    public function getAppDir() {
+        return $this->_settings['project']['root'].'/'.$this->_settings['project']['directory'];
+    }
+
+    public function getViewportId() {
         return $this->_settings['project']['viewport'];
+    }
+
+    public function getViewportDir() {
+//        return $this->_settings['project']['root'].'/'.$this->_settings['project']['viewport'];
+        return 'Threedom/Viewports/'.$this->_settings['project']['viewport'];
     }
 
     /* PROTECTED */
