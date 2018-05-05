@@ -9,8 +9,10 @@ class Viewport extends Library\Classes\Viewport {
     protected function scripts() {
         return [
             'Scripts/jquery-3.3.1.min.js',
+            'Scripts/vpConsole.js',
             'Scripts/vpConsoleMessage.js',
-            'Scripts/send.js'
+            'Scripts/vpConsoleSend.js',
+            'Scripts/vpConsoleInit.js'
         ];
     }
 

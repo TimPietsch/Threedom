@@ -29,7 +29,15 @@ class GetConsole extends Library\Classes\Action {
     }
 
     private function _clientJson($id) {
-        return json_decode(file_get_contents($this->_appDir.'/Console/'.$id.'.json'));
+        $cfgJson = json_decode(file_get_contents($this->_appDir.'/Console/'.$id.'.json'));
+
+        $clientJson = [
+            "id" => $cfgJson->id ?? $id,
+            "title" => $cfgJson->title ?? 'stdTitle',
+            "disabled" => $cfgJson->disabled ?? true
+        ];
+
+        return $clientJson;
     }
 
 }
