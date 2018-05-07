@@ -5,7 +5,7 @@ namespace Threedom\Viewports\Console\Actions;
 use Threedom\Core;
 use Threedom\Core\Library;
 
-class GetConsole extends Library\Classes\Action {
+class VpConsole extends Library\Classes\Action {
 
     use Library\Traits\CheckFile;
 

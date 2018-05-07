@@ -48,8 +48,9 @@ abstract class Viewport {
 
             // Run action and fill response
             if ($actionClass !== null) {
+                $actionName = $action;
                 $action = new $actionClass();
-                $response[] = $action((array)$args);
+                $response[$actionName] = $action((array)$args);
             }
         }
 
@@ -73,6 +74,8 @@ abstract class Viewport {
 <body id="threedom">
     {$this->_printBody()}
     <section id="scripts">
+    <script src="Threedom/Core/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Threedom/Core/Scripts/tdUpdater.js"></script>
     {$this->_printScripts()}
     </section>
 </body>

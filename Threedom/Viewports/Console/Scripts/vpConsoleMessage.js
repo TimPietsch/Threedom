@@ -3,6 +3,6 @@ function vpConsoleMessage(data) {
     this.message = data.message;
 }
 
-vpConsoleMessage.prototype.toString = function() {
+vpConsoleMessage.prototype.toString = function () {
     return "<div><div>" + this.timestamp + "</div><div>" + this.message + "</div></div>";
 };
