@@ -46,8 +46,8 @@ class Configuration extends Library\Classes\Configuration {
     }
 
     public static function getViewportDir() {
-//        return $this->_settings['project']['root'].'/'.$this->_settings['project']['viewport'];
-        return 'Threedom/Viewports/'.self::$_settings['project']['viewport'];
+        return self::$_settings['project']['root'].'/'.self::$_settings['project']['viewport'];
+//        return 'Threedom/Viewports/'.self::$_settings['project']['viewport'];
     }
 
     protected static function defaultConfig() {

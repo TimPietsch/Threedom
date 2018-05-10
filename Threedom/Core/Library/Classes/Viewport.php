@@ -2,8 +2,6 @@
 
 namespace Threedom\Core\Library\Classes;
 
-use Threedom\Core\Classes;
-
 /**
  * Description of Viewport
  * 
@@ -18,45 +16,20 @@ abstract class Viewport {
     }
 
     public final function __invoke($get) {
-        // Get application directory
-        $cfg = new Classes\Configuration();
-
-        $appId = $cfg->getAppId();
-        $appDir = $cfg->getAppDir();
-
-        $viewportId = $cfg->getViewportId();
-        $viewportDir = $cfg->getViewportDir();
 
         $response = [];
 
         // Iterate over requested actions
-        foreach ($get as $action => $args) {
-            // operate only if corresponding action is defined
-            $actionClass = null;
-
-            $appPath = $appDir.'/Actions/'.(string)$action.'.php';
-            $viewportPath = $viewportDir.'/Actions/'.(string)$action.'.php';
-
-            // First check viewport path
-            if (file_exists($viewportPath)) {
-                $actionClass = 'Threedom\\Viewports\\'.$viewportId.'\\Actions\\'.(string)$action;
-            }
-            // Then check app path for overrides
-            if (file_exists($appPath)) {
-                $actionClass = $appId.'\\Actions\\'.(string)$action;
-            }
-
-            // Run action and fill response
-            if ($actionClass !== null) {
-                $actionName = $action;
-                $action = new $actionClass();
-                $response[$actionName] = $action((array)$args);
+        foreach ($get as $action => $params) {
+            $result = Action::call($action, $params);
+            if ($result !== null) {
+                $response[$action] = $result;
             }
         }
 
         // return assembled response json
         // TODO: move header() to header management class
-//        header('Content-Type: application/json');
+        header('Content-Type: application/json');
         return json_encode($response);
     }
 
@@ -103,7 +76,7 @@ END_OF_DOCUMENT;
      * @todo dynamically get project path
      */
     protected function json($path) {
-        return json_decode(file_get_contents('Examples/'.$path), true);
+        return json_decode(file_get_contents('Examples/' . $path), true);
     }
 
     /**
@@ -116,7 +89,7 @@ END_OF_DOCUMENT;
         // Iterate over files
         foreach ($files as $file) {
             // Generate file path from file name
-            $path = $dir.'/'.$file;
+            $path = $dir . '/' . $file;
 
             // Check if file exists
             if (file_exists($path) && !in_array($path, $this->_styleFiles)) {
@@ -136,7 +109,7 @@ END_OF_DOCUMENT;
         // Iterate over files
         foreach ($files as $file) {
             // Generate file path from file name
-            $path = $dir.'/'.$file;
+            $path = $dir . '/' . $file;
 
             // Check if file exists
             if (file_exists($path) && !in_array($path, $this->_scriptFiles)) {

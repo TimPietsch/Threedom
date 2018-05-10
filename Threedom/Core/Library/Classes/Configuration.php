@@ -28,7 +28,7 @@ class Configuration {
      * 
      * @access protected
      * @static
-     * @uses $this->defaultConfig() Writes default values where no overrides are given
+     * @uses static::defaultConfig() Writes default values where no overrides are given
      * @param array $config
      * @return bool <b>TRUE</b> on success, <b>FALSE</b> if config was already set
      */
