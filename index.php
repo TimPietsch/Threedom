@@ -18,7 +18,7 @@ spl_autoload_register(new Threedom\Core\Classes\Autoload());
 
 // Set up core configuration
 $config = new Threedom\Core\Classes\Configuration(include 'config.php');
-$config->setRoot($root);
+$config::setRoot($root);
 
 // Start viewport manager
 $manager = new Threedom\Core\Classes\ViewportManager($config->getViewportId());

@@ -12,46 +12,43 @@ class Configuration {
     /**
      * @todo documentation
      */
-    final protected function getConfig() {
-        return self::$_settings[get_class($this)];
+    protected static function defaultConfig() {
+        
     }
 
     /**
      * @todo documentation
      */
-    protected function defaultConfig() {
-        
+    final protected static function getConfig() {
+        return self::$_settings[static::class];
     }
 
     /**
      * Defines the provided settings as constants
      * 
      * @access protected
+     * @static
      * @uses $this->defaultConfig() Writes default values where no overrides are given
      * @param array $config
      * @return bool <b>TRUE</b> on success, <b>FALSE</b> if config was already set
      */
-    final protected function setConfig($config, $forceOverride = false) {
+    final protected static function setConfig($config, $forceOverride = false) {
         // Save values
-        if (!array_key_exists(get_class($this), self::$_settings)) {
+        if (!array_key_exists(static::class, self::$_settings)) {
             // Combine default values and overriding user settings
-            $config = array_replace_recursive($this->defaultConfig(), $config);
+            $config = array_replace_recursive(static::defaultConfig(), $config);
 
-            self::$_settings[get_class($this)] = $config;
+            self::$_settings[static::class] = $config;
             return true;
         } elseif ($forceOverride) {
-            self::$_settings[get_class($this)] = array_replace_recursive(self::$_settings[get_class($this)], $config);
+            // Override saved settings with provided ones
+            self::$_settings[static::class] = array_replace_recursive(self::$_settings[static::class], $config);
             return true;
         } else {
             return false;
         }
     }
 
-    /* PRIVATE */
-
-    /**
-     * behaves incorrectly, maybe switch back to abstract class? meh...
-     */
     private static $_settings = array();
 
 }

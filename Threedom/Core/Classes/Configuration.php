@@ -11,46 +11,47 @@ class Configuration extends Library\Classes\Configuration {
 
     public function __construct($config = null) {
         if ($config != null) {
-            $this->setConfig($config);
+            self::setConfig($config);
         }
 
-        $this->_settings = $this->getConfig();
+        self::$_settings = self::getConfig();
     }
 
     public function setRoot($path) {
         // Set root if it was not set before
-        if (!array_key_exists('root', $this->_settings['project'])) {
+        if (!array_key_exists('root', self::$_settings['project'])) {
             $root = [
                 'project' => [
                     'root' => (string)$path
                 ]
             ];
 
-            $this->setConfig($root, true);
+            self::setConfig($root, true);
+
+            // Update static copy of settings
+            self::$_settings = self::getConfig();
         }
     }
 
-    public function getAppId() {
-        return $this->_settings['project']['directory'];
+    public static function getAppId() {
+        return self::$_settings['project']['directory'];
     }
 
-    public function getAppDir() {
-        return $this->_settings['project']['root'].'/'.$this->_settings['project']['directory'];
+    public static function getAppDir() {
+        return self::$_settings['project']['root'].'/'.self::$_settings['project']['directory'];
     }
 
-    public function getViewportId() {
-        return $this->_settings['project']['viewport'];
+    public static function getViewportId() {
+        return self::$_settings['project']['viewport'];
     }
 
-    public function getViewportDir() {
+    public static function getViewportDir() {
 //        return $this->_settings['project']['root'].'/'.$this->_settings['project']['viewport'];
-        return 'Threedom/Viewports/'.$this->_settings['project']['viewport'];
+        return 'Threedom/Viewports/'.self::$_settings['project']['viewport'];
     }
 
-    /* PROTECTED */
-
-    protected function defaultConfig() {
-        return $this->_defaults;
+    protected static function defaultConfig() {
+        return self::$_defaults;
     }
 
     /* PRIVATE */
@@ -58,13 +59,13 @@ class Configuration extends Library\Classes\Configuration {
     /**
      * @todo documentation
      */
-    private $_settings;
+    private static $_settings;
 
     /**
      * @access private
      * @var array Default values for the system
      */
-    private $_defaults = [
+    private static $_defaults = [
         'project' => [
             'name' => 'PROJECT_NAME',
             'directory' => 'Application',
