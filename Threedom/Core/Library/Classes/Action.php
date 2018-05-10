@@ -10,7 +10,5 @@ namespace Threedom\Core\Library\Classes;
  */
 abstract class Action {
 
-    public abstract function __construct();
-
     public abstract function __invoke($params);
 }
