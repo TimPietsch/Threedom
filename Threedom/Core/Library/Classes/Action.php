@@ -25,24 +25,27 @@ abstract class Action {
     public static function call($action, $params) {
         // TODO: maybe move to seperate initalize function?
         if (!self::$_isInitialized) {
-            self::$_viewportCfg['Id'] = Core\Configuration::getViewportId();
-            self::$_viewportCfg['Dir'] = Core\Configuration::getViewportDir();
-            self::$_viewportCfg['Path'] = self::$_viewportCfg['dir'] . '/Actions/' . $action . '.php';
+            self::$_viewportCfg['id'] = Core\Configuration::getViewportId();
+            self::$_viewportCfg['dir'] = Core\Configuration::getViewportDir();
 
             self::$_appCfg['id'] = Core\Configuration::getAppId();
             self::$_appCfg['dir'] = Core\Configuration::getAppDir();
-            self::$_appCfg['path'] = self::$_appCfg['dir'] . '/Actions/' . $action . '.php';
+
+            self::$_isInitialized = true;
         }
 
         // operate only if corresponding action is defined
         $actionClass = null;
 
+        $viewportPath = self::$_viewportCfg['dir'] . '/Actions/' . $action . '.php';
+        $appPath = self::$_appCfg['dir'] . '/Actions/' . $action . '.php';
+
         // First check viewport path
-        if (file_exists(self::$_viewportCfg['path'])) {
+        if (file_exists($viewportPath)) {
             $actionClass = 'Threedom\\Viewports\\' . self::$_viewportCfg['id'] . '\\Actions\\' . $action;
         }
         // Then check app path for overrides
-        if (file_exists(self::$_appCfg['path'])) {
+        if (file_exists($appPath)) {
             $actionClass = self::$_appCfg['id'] . '\\Actions\\' . $action;
         }
 

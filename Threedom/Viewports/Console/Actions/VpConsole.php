@@ -14,10 +14,10 @@ class VpConsole extends Library\Classes\Action {
         $this->_appDir = $cfg->getAppDir();
     }
 
-    public function __invoke($args) {
+    public function __invoke($params) {
         $response = [];
 
-        foreach ($args as $id) {
+        foreach ($params as $id) {
             if ($this->checkAppJson('Console', $id)) {
                 $response[] = $this->_clientJson($id);
             } else {

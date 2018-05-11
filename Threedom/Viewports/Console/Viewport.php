@@ -12,7 +12,7 @@ class Viewport extends Library\Classes\Viewport {
             'Scripts/vpConsole.js',
             'Scripts/vpConsoleMessage.js',
             'Scripts/vpConsoleSend.js',
-            'Scripts/vpConsoleInit.js'
+            'Scripts/vpConsoleStart.js'
         ];
     }
 

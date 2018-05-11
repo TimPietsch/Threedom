@@ -38,7 +38,7 @@ class Configuration extends Library\Classes\Configuration {
     }
 
     public static function getAppDir() {
-        return self::$_settings['project']['root'].'/'.self::$_settings['project']['directory'];
+        return self::$_settings['project']['root'] . '/' . self::$_settings['project']['directory'];
     }
 
     public static function getViewportId() {
@@ -46,7 +46,7 @@ class Configuration extends Library\Classes\Configuration {
     }
 
     public static function getViewportDir() {
-        return self::$_settings['project']['root'].'/'.self::$_settings['project']['viewport'];
+        return self::$_settings['project']['root'] . '/Threedom/Viewports/' . self::$_settings['project']['viewport'];
 //        return 'Threedom/Viewports/'.self::$_settings['project']['viewport'];
     }
 

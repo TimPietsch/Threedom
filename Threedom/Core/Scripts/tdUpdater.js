@@ -6,8 +6,11 @@ function tdUpdater(cfg) {
 
 tdUpdater.prototype.register = function (query) {
     if (query.hasOwnProperty('action')) {
+        query.params = query.params || [];
+
         // Add new query
         this.queries[query.action] = query;
+
     }
 };
 
@@ -20,6 +23,9 @@ tdUpdater.prototype.run = function () {
         var paramsLength = this.queries[queryId].params.length;
         for (var i = 0; i < paramsLength; i++) {
             queries.push(this.queries[queryId].action + '[]=' + this.queries[queryId].params[i]);
+        }
+        if (paramsLength === 0) {
+            queries.push(this.queries[queryId].action + '[]');
         }
     }
     var url = '?' + queries.join('&');
@@ -36,8 +42,10 @@ tdUpdater.prototype.run = function () {
                     this.queries[queryId].success(result[queryId]);
                 }
             },
-            error: function () {
-                console.log('Tschüss Welt');
+            error: function (xhr, status, error) {
+                console.error('Ajax failed');
+                console.warn(status);
+                console.warn(error);
             }
         });
 

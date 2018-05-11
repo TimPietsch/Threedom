@@ -1,12 +1,10 @@
-var id = 'console2';
-
 var updater = new tdUpdater({
-    count: 1
+    count: 1,
+    interval: 5
 });
 
 updater.register({
-    action: 'VpConsole',
-    params: ['console', 'console2'],
+    action: 'VpStart',
     success: function (result) {
         console.log(result);
     }
